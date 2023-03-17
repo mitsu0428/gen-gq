@@ -1,36 +1,26 @@
 <script>
   import ToDoInputForm from "./ToDoInputForm.svelte";
-  import ToDoList from "./ToDoList.svelte";
-  let nameEntered = false;
-
-  let lastName = "";
-  let firstName = "";
-
-  $: fullName = lastName + " " + firstName;
-  function handleSubmit() {
-    if (lastName && firstName) {
-      nameEntered = true;
-    }
-  }
 </script>
 
 <main>
-  {#if nameEntered}
-    <h1>Generate Good Question</h1>
-    <p>{fullName}さん!</p>
-    <ToDoInputForm userName={fullName} />
-    <ToDoList />
-  {:else}
-    <h1>Generate Good Question</h1>
-    <h3>名前を入力してください。</h3>
-    <form on:submit|preventDefault={handleSubmit}>
-      <div>
-        <input bind:value={lastName} type="text" placeholder="姓" required />
-      </div>
-      <div>
-        <input bind:value={firstName} type="text" placeholder="名" required />
-      </div>
-      <button type="submit">タスク管理を始める</button>
-    </form>
-  {/if}
+  <h1>Generate Good Question</h1>
+  <p>「いい質問の仕方が分からない」</p>
+  <p>「質問をするときに、自分の考えを整理することができない」</p>
+  <p>「流行りのChatGPTのようなAIアプリで欲しい答えが返ってこない」</p>
+  <p>GGQは、表示される入力フォームに沿って回答して「良い質問」を作れるよ。</p>
+  <ToDoInputForm />
 </main>
+
+<style>
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: left;
+    height: 100vh;
+  }
+  p {
+    margin: 0;
+    padding: 0;
+  }
+</style>
